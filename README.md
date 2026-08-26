@@ -7,7 +7,7 @@ This repository is the computational companion to my Master's thesis in Applied 
 > **Using Higher-Order Time Integration Technique for Solving Nonlinear Reactive Transport Equation in Porous Media**
 
 **Kassem Al Halaby**  
-Lebanese University — Faculty of Sciences  
+Lebanese University, Faculty of Sciences  
 Supervisor: **Prof. Marwan Fahs, University of Strasbourg**
 
 ---
