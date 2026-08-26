@@ -34,31 +34,24 @@ The main quantitative criteria are the **discrete $L^2$ error (RMSE)** and the *
 
 On the one-dimensional domain
 
-$$
-\Omega=(0,L),
-$$
+$$\Omega=(0,L)$$
+
 the nonlinear reactive transport equation is written as
 
-$$
-R(C)\frac{\partial C}{\partial t}
-+V\frac{\partial C}{\partial x}
--D\frac{\partial^2 C}{\partial x^2}=0,
-$$
+$$R(C)\frac{\partial C}{\partial t} +V\frac{\partial C}{\partial x} -D\frac{\partial^2 C}{\partial x^2}=0$$
+
 with the concentration-dependent retardation factor
 
-$$
-R(C)=1+\frac{\rho_b}{\varepsilon}K_f n_f C^{n_f-1}.
-$$
+$$R(C)=1+\frac{\rho_b}{\varepsilon}K_f n_f C^{n_f-1}$$
+
 The nonlinear sorption is described by the Freundlich isotherm
 
-$$
-S(C)=K_f C^{n_f},
-$$
+$$S(C)=K_f C^{n_f}$$
+
 or, equivalently,
 
-$$
-M(C)=C+\frac{\rho_b}{\varepsilon}K_f C^{n_f}.
-$$
+$$M(C)=C+\frac{\rho_b}{\varepsilon}K_f C^{n_f}$$
+
 The nonlinear storage term is responsible for the concentration-dependent retardation and contributes to the stiffness of the semi-discrete system.
 
 ---
@@ -69,24 +62,16 @@ The spatial operator is constructed with a **cell-centred finite-volume discreti
 
 For the central advective closure,
 
-$$
-R(C_i)\frac{dC_i}{dt}
-+V\frac{C_{i+1}-C_{i-1}}{2\Delta x}
--D\frac{C_{i+1}-2C_i+C_{i-1}}{\Delta x^2}=0.
-$$
+$$R(C_i)\frac{dC_i}{dt} +V\frac{C_{i+1}-C_{i-1}}{2\Delta x} -D\frac{C_{i+1}-2C_i+C_{i-1}}{\Delta x^2}=0$$
+
 For the upwind closure ($V>0$),
 
-$$
-R(C_i)\frac{dC_i}{dt}
-+V\frac{C_i-C_{i-1}}{\Delta x}
--D\frac{C_{i+1}-2C_i+C_{i-1}}{\Delta x^2}=0.
-$$
+$$R(C_i)\frac{dC_i}{dt} +V\frac{C_i-C_{i-1}}{\Delta x} -D\frac{C_{i+1}-2C_i+C_{i-1}}{\Delta x^2}=0$$
+
 This finite-volume discretization produces the method-of-lines system
 
-$$
-\frac{dC}{dt}=f(C),
-\qquad C=(C_1,\ldots,C_N)^T,
-$$
+$$\frac{dC}{dt}=f(C), \qquad C=(C_1,\ldots,C_N)^T$$
+
 which is then advanced in time.
 
 ---
@@ -97,22 +82,16 @@ which is then advanced in time.
 
 Implicit Euler is first order and coincides with BDF1:
 
-$$
-C^{n+1}=C^n+\Delta t\,f(C^{n+1}).
-$$
+$$C^{n+1}=C^n+\Delta t\,f(C^{n+1})$$
+
 For the nonlinear transport model, each step is solved with **Newton–Raphson iteration** using the analytical Jacobian.
 
 ### Explicit RK2
 
 The second-order midpoint scheme is
 
-$$
-k_1=f(C^n),
-\qquad
-k_2=f\left(C^n+\frac{\Delta t}{2}k_1\right),
-\qquad
-C^{n+1}=C^n+\Delta t\,k_2.
-$$
+$$k_1=f(C^n), \qquad k_2=f\left(C^n+\frac{\Delta t}{2}k_1\right), \qquad C^{n+1}=C^n+\Delta t\,k_2$$
+
 It improves temporal accuracy but remains subject to explicit stability restrictions.
 
 ### Variable-order BDF
@@ -172,22 +151,14 @@ On the tested case, the three methods reproduce essentially the same transported
 
 For a common set of reference points $x_j$, the thesis uses the discrete root-mean-square error
 
-$$
-\|e\|_{L^2}
-=
-\left(
-\frac{1}{M}
-\sum_{j=1}^M
-\left(C^{\mathrm{num}}(x_j)-C^{\mathrm{ref}}_j\right)^2
-\right)^{1/2}.
-$$
+$$\|e\|_{L^2} = \left( \frac{1}{M} \sum_{j=1}^M \left(C^{\mathrm{num}}(x_j)-C^{\mathrm{ref}}_j\right)^2 \right)^{1/2}$$
+
 The CPU time is the measured wall-clock time required to reach the final simulation time $T$.
 
 The comparison is performed on
 
-$$
-N\in\{100,200,500,1000,1500,2000\}.
-$$
+$$N\in\{100,200,500,1000,1500,2000\}$$
+
 ### Thesis results
 
 | Mesh $N$ | Euler Error | Euler CPU (s) | RK2 Error | RK2 CPU (s) | BDF Error | BDF CPU (s) |
@@ -215,9 +186,8 @@ The numerical experiments support the main conclusion that **higher-order implic
 
 The key point is not simply that BDF is more accurate. Rather,
 
-$$
-\textbf{stability} \;+\; \textbf{accuracy} \;+\; \textbf{larger admissible time steps}
-$$
+$$\textbf{stability} \;+\; \textbf{accuracy} \;+\; \textbf{larger admissible time steps}$$
+
 can be obtained within the same finite-volume framework, which leads to a substantially more favourable computational cost than the explicit alternatives in the tested stiff regime.
 
 ---
