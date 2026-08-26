@@ -174,7 +174,7 @@ The complete numerical table is stored in [`results/comparison_results.csv`](res
 
 ### CPU time versus error
 
-![CPU versus error](figures/cpu_vs_error.png)
+![CPU versus error](figures/cpu_vs_error_reproduced.png)
 
 The log–log work/accuracy diagram makes the computational difference particularly clear. Euler becomes increasingly expensive as the mesh is refined. RK2 is less expensive than Euler in the reported experiments but still requires explicit time integration. Variable-order BDF provides the most favourable CPU/error balance for the stiff nonlinear problem, while retaining the accuracy of the terminal profile.
 
