@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+title: "Higher-Order Time Integration for Nonlinear Reactive Transport in Porous Media"
+type: software
+authors:
+  - family-names: "Al Halaby"
+    given-names: "Kassem"
+contact:
+  - family-names: "Al Halaby"
+    given-names: "Kassem"
+repository-code: "https://github.com/kassemalhalaby/reactive-transport-time-integration"
+license: MIT
+abstract: >-
+  Computational companion to a Master's thesis studying explicit and implicit
+  time integration techniques for a one-dimensional nonlinear reactive
+  transport equation with equilibrium Freundlich sorption in a finite-volume framework.

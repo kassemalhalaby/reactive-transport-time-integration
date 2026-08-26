@@ -1,0 +1,13 @@
+parameter,value,unit
+L,1.0,m
+T,0.4,day
+V,1.0,m/day
+D,1e-3,m^2/day
+epsilon,0.4,-
+rho_b,1.59,benchmark units
+Kf,0.126,-
+nf,0.7,-
+C_left,0.0,-
+C_right,0.0,-
+Delta_t_implicit_euler,4,s
+N_meshes,"100;200;500;1000;1500;2000",cells
